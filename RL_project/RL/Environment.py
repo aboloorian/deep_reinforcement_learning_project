@@ -9,6 +9,16 @@ class Environment:
         self.goal_state = goal_state
         self.rewards = rewards
         self.actions = ['up', 'down', 'left', 'right']
+        self.initial_state = 0  # assuming the initial state is 0
+
+    def reset(self):
+        return self.initial_state
+
+    def step(self, state, action):
+        next_state = self.get_next_state(state, action)
+        reward = self.get_reward(next_state)
+        done = next_state == self.goal_state
+        return next_state, reward, done
 
     def get_next_state(self, state, action):
         row, col = divmod(state, self.size[1])
@@ -24,4 +34,3 @@ class Environment:
 
     def get_reward(self, state):
         return self.rewards.get(state, -1)
-
