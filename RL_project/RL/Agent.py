@@ -1,10 +1,11 @@
 import numpy as np
+
 #Agent is the class to manage all agent iteration
 #The constructor take 2 parameters , Env object and gamma
 #environment:object
 #gamma:0<gamma<1
 
-class PolicyAgent:
+class Agent:
     def __init__(self, environment, parameters,gamma=1.0):
         self.environment = environment
         self.gamma = gamma
